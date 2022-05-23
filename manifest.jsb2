@@ -1,0 +1,22 @@
+{
+	"projectName": "ai-catsuggest",
+	"licenseText": "proprietary",
+	"pkgs": [{
+		"name": "ai-catsuggest CSS",
+		"file": "ai-catsuggest.css",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.css",
+			"path": "themes/admin/jqadm/"
+		}]
+	}, {
+		"name": "ai-catsuggest JS",
+		"file": "ai-catsuggest.js",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.js",
+			"path": "themes/admin/jqadm/"
+		}]
+	}],
+	"resources" : []
+}
