@@ -1,6 +1,6 @@
 {
-	"name": "aimeos-extensions/ai-catsuggest",
-	"description": "Aimeos ai-catsuggest extension",
+	"name": "aimeos/ai-catsuggest",
+	"description": "Aimeos category suggestion in catalog/suggest HTML client",
 	"keywords": ["aimeos", "extension"],
 	"type": "aimeos-extension",
 	"license": "LGPL-3.0",
