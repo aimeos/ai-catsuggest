@@ -30,7 +30,7 @@ namespace Aimeos\Client\Html\Catalog\Suggest;
 		$catItems = \Aimeos\Controller\Frontend::create( $context, 'catalog' )->uses( $domains )
 			->compare( '>', 'catalog:relevance("' . str_replace( '"', ' ', $text ) . '")', 0 )
 			->sort( '-sort:catalog:relevance("' . str_replace( '"', ' ', $text ) . '")' )
-			->slice( 0, (int) floor( $size / 2 ) )
+			->slice( 0, $size )
 			->search();
 
 
