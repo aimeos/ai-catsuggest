@@ -35,26 +35,26 @@ class SearchTest extends \PHPUnit\Framework\TestCase
 	}
 
 
-    public function testGetSearchAttributes()
-    {
-        $this->stub->expects( $this->once() )->method( 'getSearchAttributes' )->will( $this->returnValue( [] ) );
-
-        $result = $this->object->getSearchAttributes( false );
-
-        $this->assertArrayHasKey( 'catalog:relevance', $result );
-        $this->assertArrayHasKey( 'sort:catalog:relevance', $result );
-    }
-
-
-    public function testSearch()
+	public function testGetSearchAttributes()
 	{
-        $manager = \Aimeos\MShop\Catalog\Manager\Factory::create( $this->context );
-        $object = new \Aimeos\MShop\Catalog\Manager\Decorator\Search( $manager, $this->context );
+		$this->stub->expects( $this->once() )->method( 'getSearchAttributes' )->will( $this->returnValue( [] ) );
+
+		$result = $this->object->getSearchAttributes( false );
+
+		$this->assertArrayHasKey( 'catalog:relevance', $result );
+		$this->assertArrayHasKey( 'sort:catalog:relevance', $result );
+	}
+
+
+	public function testSearch()
+	{
+		$manager = \Aimeos\MShop\Catalog\Manager\Factory::create( $this->context );
+		$object = new \Aimeos\MShop\Catalog\Manager\Decorator\Search( $manager, $this->context );
 
 		$filter = $object->filter()->order( '-sort:catalog:relevance("Kaffee")' );
-        $filter->add( $filter->is( 'catalog:relevance("Kaffee")', '>', 0 ) );
+		$filter->add( $filter->is( 'catalog:relevance("Kaffee")', '>', 0 ) );
 
-        $result = $object->search( $filter, ['text'] );
+		$result = $object->search( $filter, ['text'] );
 
 		$this->assertEquals( 1, count( $result ) );
 	}
