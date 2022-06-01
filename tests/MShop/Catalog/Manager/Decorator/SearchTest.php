@@ -48,7 +48,7 @@ class SearchTest extends \PHPUnit\Framework\TestCase
 
 	public function testSearch()
 	{
-		$manager = \Aimeos\MShop\Catalog\Manager\Factory::create( $this->context );
+		$manager = \Aimeos\MShop::create( $this->context, 'catalog' );
 		$object = new \Aimeos\MShop\Catalog\Manager\Decorator\Search( $manager, $this->context );
 
 		$filter = $object->filter()->order( '-sort:catalog:relevance("Kaffee")' );
