@@ -61,7 +61,7 @@ class Catsuggest extends Standard
 		$view->suggestSupplierItems = $supItems;
 		$view->suggestCatalogItems = $catItems;
 
-		return parent::data( $view, $tags, $expire );
+		return $view;
 	}
 
 
