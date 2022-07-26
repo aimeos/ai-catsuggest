@@ -63,18 +63,4 @@ class Catsuggest extends Standard
 
 		return $view;
 	}
-
-
-	/**
-	 * Adds additional conditions for filtering
-	 *
-	 * @param \Aimeos\Controller\Frontend\Product\Iface $cntl Product controller
-	 * @param \Aimeos\Base\View\Iface $view View object
-	 */
-	protected function conditions( \Aimeos\Controller\Frontend\Product\Iface $cntl, \Aimeos\Base\View\Iface $view )
-	{
-		if( $view->config( 'client/html/catalog/instock', false ) ) {
-			$cntl->compare( '>', 'product.instock', 0 );
-		}
-	}
 }
