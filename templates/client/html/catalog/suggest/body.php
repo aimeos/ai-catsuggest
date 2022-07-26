@@ -46,7 +46,7 @@ foreach( $this->get( 'suggestCatalogItems', [] ) as $id => $catItem )
 foreach( $this->get( 'suggestItems', [] ) as $id => $productItem )
 {
 	$supplier = $productItem->getRefItems( 'supplier' )->getName()->first();
-	$name = strip_tags( $productItem->getName() ) . ( $supplier ? ' - ' . $supplier : '' );
+	$name = strip_tags( $productItem->getName() ) . ( $supplier ? ' • ' . $supplier : '' );
 	$params = ['d_name' => $productItem->getName( 'url' ), 'd_prodid' => $productItem->getId(), 'd_pos' => ''];
 
 	$items[] = [
