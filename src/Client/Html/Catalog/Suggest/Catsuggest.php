@@ -27,10 +27,17 @@ class Catsuggest extends Standard
 		$domains = $config->get( 'client/html/catalog/suggest/domains', ['text'] );
 		$size = $config->get( 'client/html/catalog/suggest/size', 24 );
 
+		$supItems = \Aimeos\Controller\Frontend::create( $context, 'supplier' )->uses( $domains )
+			->compare( '>', 'supplier:relevance("' . str_replace( '"', ' ', $text ) . '")', 0 )
+			->sort( '-sort:supplier:relevance("' . str_replace( '"', ' ', $text ) . '")' )
+			->slice( 0, $size )
+			->search();
+
+
 		$catItems = \Aimeos\Controller\Frontend::create( $context, 'catalog' )->uses( $domains )
 			->compare( '>', 'catalog:relevance("' . str_replace( '"', ' ', $text ) . '")', 0 )
 			->sort( '-sort:catalog:relevance("' . str_replace( '"', ' ', $text ) . '")' )
-			->slice( 0, $size )
+			->slice( 0, $size - count( $supItems ) )
 			->search();
 
 
@@ -48,7 +55,8 @@ class Catsuggest extends Standard
 				->oneOf( $view->param( 'f_oneid', [] ) );
 		}
 
-		$view->suggestItems = $cntl->slice( 0, $size - count( $catItems ) )->search();
+		$view->suggestItems = $cntl->slice( 0, $size - count( $catItems ) - count( $supItems ) )->search();
+		$view->suggestSupplierItems = $supItems;
 		$view->suggestCatalogItems = $catItems;
 
 		return parent::data( $view, $tags, $expire );

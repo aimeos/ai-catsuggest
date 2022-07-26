@@ -73,6 +73,23 @@ class CatsuggestTest extends \PHPUnit\Framework\TestCase
 	}
 
 
+	public function testBodySuppliers()
+	{
+		$helper = new \Aimeos\Base\View\Helper\Param\Standard( $this->view, array( 'f_search' => 'Suppli' ) );
+		$this->view->addHelper( 'param', $helper );
+
+		$output = $this->object->body();
+		$suggestItems = $this->view->suggestSupplierItems;
+
+		$this->assertRegExp( '#\[\{"label":"Test supplier","html":".*Test supplier.*"\}\]#smU', $output );
+		$this->assertNotEquals( [], $suggestItems );
+
+		foreach( $suggestItems as $item ) {
+			$this->assertInstanceOf( \Aimeos\MShop\Supplier\Item\Iface::class, $item );
+		}
+	}
+
+
 	public function testBodyUseCodes()
 	{
 		$this->context->config()->set( 'client/html/catalog/suggest/usecode', true );

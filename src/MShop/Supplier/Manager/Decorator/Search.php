@@ -1,25 +1,25 @@
 <?php
 
-namespace Aimeos\MShop\Catalog\Manager\Decorator;
+namespace Aimeos\MShop\Supplier\Manager\Decorator;
 
 
 /**
- * Full text search config for catalog label
+ * Full text search config for supplier label
  */
-class Search extends Base
+class Search extends \Aimeos\MShop\Common\Manager\Decorator\Base
 {
 	private $attr = [
-		'catalog:relevance' => array(
-			'code' => 'catalog:relevance()',
-			'internalcode' => 'MATCH( mcat."label" ) AGAINST( $1 IN BOOLEAN MODE )',
+		'supplier:relevance' => array(
+			'code' => 'supplier:relevance()',
+			'internalcode' => 'MATCH( msup."label" ) AGAINST( $1 IN BOOLEAN MODE )',
 			'label' => 'Category texts, parameter(<search term>)',
 			'type' => 'float',
 			'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT,
 			'public' => false,
 		),
-		'sort:catalog:relevance' => array(
-			'code' => 'sort:catalog:relevance()',
-			'internalcode' => 'MATCH( mcat."label" ) AGAINST( $1 IN BOOLEAN MODE )',
+		'sort:supplier:relevance' => array(
+			'code' => 'sort:supplier:relevance()',
+			'internalcode' => 'MATCH( msup."label" ) AGAINST( $1 IN BOOLEAN MODE )',
 			'label' => 'Category text sorting, parameter(<search term>)',
 			'type' => 'float',
 			'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT,
@@ -53,8 +53,8 @@ class Search extends Base
 			return $params;
 		};
 
-		$this->attr['sort:catalog:relevance']['function'] = $func;
-		$this->attr['catalog:relevance']['function'] = $func;
+		$this->attr['sort:supplier:relevance']['function'] = $func;
+		$this->attr['supplier:relevance']['function'] = $func;
 	}
 
 

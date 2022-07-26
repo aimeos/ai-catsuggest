@@ -1,10 +1,10 @@
-# Suggest categories
+# Suggest categories and suppliers
 
 Include categories in search suggestions offered by catalog/suggest HTML client
-component and extends the catalog manager to allow searching/sorting by relevance
-within the catalog label.
+component and extends the catalog and supplier manager to allow searching/sorting
+by relevance within the catalog and supplier label.
 
-**Caution:** The catalog label can NOT be translated into different languages!
+**Caution:** The catalog and supplier label can NOT be translated into different languages!
 
 ## Installation
 

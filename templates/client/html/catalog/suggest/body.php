@@ -9,6 +9,23 @@ $enc = $this->encoder();
 $items = [];
 
 
+foreach( $this->get( 'suggestSupplierItems', [] ) as $id => $supItem )
+{
+	$name = strip_tags( $supItem->getName() );
+	$params = ['s_name' => $supItem->getName( 'url' ), 'f_supid' => $supItem->getId()];
+
+	$items[] = [
+		'label' => $name,
+		'html' => '
+			<div class="aimeos catalog-suggest">
+				<a class="suggest-item" href="' . $enc->attr( $this->link( 'client/html/supplier/detail/url', $params ) ) . '">
+					<div class="item-name">' . $enc->html( $name ) . '</div>
+				</a>
+			</div>
+		'
+	];
+}
+
 foreach( $this->get( 'suggestCatalogItems', [] ) as $id => $catItem )
 {
 	$name = strip_tags( $catItem->getName() );
@@ -18,7 +35,7 @@ foreach( $this->get( 'suggestCatalogItems', [] ) as $id => $catItem )
 		'label' => $name,
 		'html' => '
 			<div class="aimeos catalog-suggest">
-				<a class="suggest-item" href="' . $enc->attr( $this->link( 'client/html/catalog/lists/url', $params ) ) . '">
+				<a class="suggest-item" href="' . $enc->attr( $this->link( 'client/html/catalog/tree/url', $params ) ) . '">
 					<div class="item-name">' . $enc->html( $name ) . '</div>
 				</a>
 			</div>
