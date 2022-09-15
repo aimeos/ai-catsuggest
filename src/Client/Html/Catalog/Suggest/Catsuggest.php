@@ -28,15 +28,15 @@ class Catsuggest extends Standard
 		$size = $config->get( 'client/html/catalog/suggest/size', 24 );
 
 		$supItems = \Aimeos\Controller\Frontend::create( $context, 'supplier' )->uses( $domains )
-			->compare( '>', 'supplier:relevance("' . str_replace( '"', ' ', $text ) . '")', 0 )
-			->sort( '-sort:supplier:relevance("' . str_replace( '"', ' ', $text ) . '")' )
+			->compare( '>', 'supplier:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")', 0 )
+			->sort( '-sort:supplier:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")' )
 			->slice( 0, $size )
 			->search();
 
 
 		$catItems = \Aimeos\Controller\Frontend::create( $context, 'catalog' )->uses( $domains )
-			->compare( '>', 'catalog:relevance("' . str_replace( '"', ' ', $text ) . '")', 0 )
-			->sort( '-sort:catalog:relevance("' . str_replace( '"', ' ', $text ) . '")' )
+			->compare( '>', 'catalog:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")', 0 )
+			->sort( '-sort:catalog:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")' )
 			->slice( 0, $size - count( $supItems ) )
 			->search();
 
