@@ -114,7 +114,7 @@ class TestHelper
 		$ctx->setLogger( $logger );
 
 
-		$dbm = \Aimeos\Base\DB\Factory::create( $conf, 'PDO' );
+		$dbm = \Aimeos\Base\DB\Factory::create( $conf->get( 'resource', [] ), 'PDO' );
 		$ctx->setDatabaseManager( $dbm );
 
 
