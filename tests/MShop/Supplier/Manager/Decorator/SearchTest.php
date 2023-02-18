@@ -22,7 +22,7 @@ class SearchTest extends \PHPUnit\Framework\TestCase
 
 		$this->stub = $this->getMockBuilder( '\\Aimeos\\MShop\\Supplier\\Manager\\Standard' )
 			->setConstructorArgs( [$this->context] )
-			->setMethods( ['getSearchAttributes'] )
+			->onlyMethods( ['getSearchAttributes'] )
 			->getMock();
 
 		$this->object = new \Aimeos\MShop\Supplier\Manager\Decorator\Search( $this->stub, $this->context );

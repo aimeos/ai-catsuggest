@@ -47,7 +47,7 @@ class CatsuggestTest extends \PHPUnit\Framework\TestCase
 		$output = $this->object->body();
 		$suggestItems = $this->view->suggestItems;
 
-		$this->assertRegExp( '#\{"label":"Cafe.*","html":".*Cafe.*"\}#smU', $output );
+		$this->assertMatchesRegularExpression( '#\{"label":"Cafe.*","html":".*Cafe.*"\}#smU', $output );
 		$this->assertNotEquals( [], $suggestItems );
 
 		foreach( $suggestItems as $item ) {
@@ -64,7 +64,7 @@ class CatsuggestTest extends \PHPUnit\Framework\TestCase
 		$output = $this->object->body();
 		$suggestItems = $this->view->suggestCatalogItems;
 
-		$this->assertRegExp( '#\{"label":"Kaffee.*","html":".*Kaffee.*"\}#smU', $output );
+		$this->assertMatchesRegularExpression( '#\{"label":"Kaffee.*","html":".*Kaffee.*"\}#smU', $output );
 		$this->assertNotEquals( [], $suggestItems );
 
 		foreach( $suggestItems as $item ) {
@@ -81,7 +81,7 @@ class CatsuggestTest extends \PHPUnit\Framework\TestCase
 		$output = $this->object->body();
 		$suggestItems = $this->view->suggestSupplierItems;
 
-		$this->assertRegExp( '#\{"label":"Test supplier","html":".*Test supplier.*"\}#smU', $output );
+		$this->assertMatchesRegularExpression( '#\{"label":"Test supplier","html":".*Test supplier.*"\}#smU', $output );
 		$this->assertNotEquals( [], $suggestItems );
 
 		foreach( $suggestItems as $item ) {
@@ -100,7 +100,7 @@ class CatsuggestTest extends \PHPUnit\Framework\TestCase
 		$output = $this->object->body();
 		$suggestItems = $this->view->suggestItems;
 
-		$this->assertRegExp( '#\{"label":"Cafe.*","html":".*Cafe.*"\}#smU', $output );
+		$this->assertMatchesRegularExpression( '#\{"label":"Cafe.*","html":".*Cafe.*"\}#smU', $output );
 		$this->assertNotEquals( [], $suggestItems );
 
 		foreach( $suggestItems as $item ) {
