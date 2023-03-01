@@ -8,7 +8,7 @@ namespace Aimeos\MShop\Catalog\Manager\Decorator;
  */
 class Search extends Base
 {
-	private $attr = [
+	private array $attr = [
 		'catalog:relevance' => array(
 			'code' => 'catalog:relevance()',
 			'internalcode' => 'MATCH( mcat."label" ) AGAINST( $1 IN BOOLEAN MODE )',

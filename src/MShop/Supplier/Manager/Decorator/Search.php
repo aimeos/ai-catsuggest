@@ -8,7 +8,7 @@ namespace Aimeos\MShop\Supplier\Manager\Decorator;
  */
 class Search extends \Aimeos\MShop\Common\Manager\Decorator\Base
 {
-	private $attr = [
+	private array $attr = [
 		'supplier:relevance' => array(
 			'code' => 'supplier:relevance()',
 			'internalcode' => 'MATCH( msup."label" ) AGAINST( $1 IN BOOLEAN MODE )',
