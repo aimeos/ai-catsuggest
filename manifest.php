@@ -9,9 +9,6 @@ return [
 		'aimeos-core',
 		'ai-client-html',
 	],
-	'include' => [
-		'src',
-	],
 	'setup' => [
 		'setup',
 	],
