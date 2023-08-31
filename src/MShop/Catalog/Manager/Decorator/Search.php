@@ -14,7 +14,6 @@ class Search extends Base
 			'internalcode' => 'MATCH( mcat."label" ) AGAINST( $1 IN BOOLEAN MODE )',
 			'label' => 'Category texts, parameter(<search term>)',
 			'type' => 'float',
-			'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT,
 			'public' => false,
 		),
 		'sort:catalog:relevance' => array(
@@ -22,7 +21,6 @@ class Search extends Base
 			'internalcode' => 'MATCH( mcat."label" ) AGAINST( $1 IN BOOLEAN MODE )',
 			'label' => 'Category text sorting, parameter(<search term>)',
 			'type' => 'float',
-			'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT,
 			'public' => false,
 		),
 	];

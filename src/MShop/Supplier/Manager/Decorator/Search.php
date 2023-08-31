@@ -14,7 +14,6 @@ class Search extends \Aimeos\MShop\Common\Manager\Decorator\Base
 			'internalcode' => 'MATCH( msup."label" ) AGAINST( $1 IN BOOLEAN MODE )',
 			'label' => 'Category texts, parameter(<search term>)',
 			'type' => 'float',
-			'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT,
 			'public' => false,
 		),
 		'sort:supplier:relevance' => array(
@@ -22,7 +21,6 @@ class Search extends \Aimeos\MShop\Common\Manager\Decorator\Base
 			'internalcode' => 'MATCH( msup."label" ) AGAINST( $1 IN BOOLEAN MODE )',
 			'label' => 'Category text sorting, parameter(<search term>)',
 			'type' => 'float',
-			'internaltype' => \Aimeos\Base\DB\Statement\Base::PARAM_FLOAT,
 			'public' => false,
 		),
 	];
