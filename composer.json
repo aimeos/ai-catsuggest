@@ -7,7 +7,9 @@
 	"prefer-stable": true,
 	"minimum-stability": "dev",
 	"require": {
-		"php": "^8.0.11"
+		"php": "^8.0.11",
+		"aimeos/aimeos-core": "dev-master",
+		"aimeos/ai-controller-frontend": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
