@@ -2,8 +2,15 @@
 	"name": "aimeos/ai-catsuggest",
 	"description": "Aimeos category suggestion in catalog/suggest HTML client",
 	"keywords": ["aimeos", "extension"],
+	"homepage": "https://aimeos.org",
 	"type": "aimeos-extension",
-	"license": "LGPL-3.0",
+	"license": "LGPL-3.0-or-later",
+	"support": {
+		"source": "https://github.com/aimeos/ai-catsuggest",
+		"issues": "https://github.com/aimeos/ai-catsuggest/issues",
+		"forum": "https://aimeos.org/help",
+		"wiki": "https://aimeos.org/docs"
+	},
 	"prefer-stable": true,
 	"minimum-stability": "dev",
 	"require": {
