@@ -37,7 +37,7 @@ class SearchTest extends \PHPUnit\Framework\TestCase
 
 	public function testGetSearchAttributes()
 	{
-		$this->stub->expects( $this->once() )->method( 'getSearchAttributes' )->will( $this->returnValue( [] ) );
+		$this->stub->expects( $this->once() )->method( 'getSearchAttributes' )->willReturn( [] );
 
 		$result = $this->object->getSearchAttributes( false );
 
