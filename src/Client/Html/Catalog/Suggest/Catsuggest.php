@@ -18,7 +18,7 @@ namespace Aimeos\Client\Html\Catalog\Suggest;
  */
 class Catsuggest extends Standard
 {
-	public function data( \Aimeos\Base\View\Iface $view, array &$tags = [], string &$expire = null ) : \Aimeos\Base\View\Iface
+	public function data( \Aimeos\Base\View\Iface $view, array &$tags = [], ?string &$expire = null ) : \Aimeos\Base\View\Iface
 	{
 		$context = $this->context();
 		$config = $context->config();
