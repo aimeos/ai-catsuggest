@@ -20,11 +20,7 @@ class SearchTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( '\\Aimeos\\MShop\\Supplier\\Manager\\Standard' )
-			->setConstructorArgs( [$this->context] )
-			->onlyMethods( ['getSearchAttributes'] )
-			->getMock();
-
+		$this->stub = \Aimeos\MShop::create( $this->context, 'supplier' );
 		$this->object = new \Aimeos\MShop\Supplier\Manager\Decorator\Search( $this->stub, $this->context );
 	}
 
@@ -37,9 +33,15 @@ class SearchTest extends \PHPUnit\Framework\TestCase
 
 	public function testGetSearchAttributes()
 	{
-		$this->stub->expects( $this->once() )->method( 'getSearchAttributes' )->willReturn( [] );
+		$stub = $this->getMockBuilder( '\\Aimeos\\MShop\\Supplier\\Manager\\Standard' )
+			->setConstructorArgs( [$this->context] )
+			->onlyMethods( ['getSearchAttributes'] )
+			->getMock();
 
-		$result = $this->object->getSearchAttributes( false );
+		$stub->expects( $this->once() )->method( 'getSearchAttributes' )->willReturn( [] );
+
+		$object = new \Aimeos\MShop\Supplier\Manager\Decorator\Search( $stub, $this->context );
+		$result = $object->getSearchAttributes( false );
 
 		$this->assertArrayHasKey( 'supplier:relevance', $result );
 		$this->assertArrayHasKey( 'sort:supplier:relevance', $result );
