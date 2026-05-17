@@ -28,15 +28,20 @@ class Catsuggest extends Standard
 		$size = $config->get( 'client/html/catalog/suggest/size', 24 );
 
 		$supItems = \Aimeos\Controller\Frontend::create( $context, 'supplier' )->uses( $domains )
-			->compare( '>', 'supplier:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")', 0 )
-			->sort( '-sort:supplier:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")' )
+			// @phpstan-ignore argument.type
+			->compare( '>', 'supplier:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")', 0 ) // @phpstan-ignore binaryOp.invalid
+			// @phpstan-ignore argument.type
+			->sort( '-sort:supplier:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")' ) // @phpstan-ignore binaryOp.invalid
 			->slice( 0, $size )
 			->search();
 
 
 		$catItems = \Aimeos\Controller\Frontend::create( $context, 'catalog' )->uses( $domains )
-			->compare( '>', 'catalog:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")', 0 )
-			->sort( '-sort:catalog:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")' )
+			// @phpstan-ignore argument.type
+			->compare( '>', 'catalog:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")', 0 ) // @phpstan-ignore binaryOp.invalid
+			// @phpstan-ignore argument.type
+			->sort( '-sort:catalog:relevance("' . str_replace( ['"', ','], ' ', $text ) . '")' ) // @phpstan-ignore binaryOp.invalid
+			// @phpstan-ignore argument.type
 			->slice( 0, $size - count( $supItems ) )
 			->search();
 
@@ -47,6 +52,7 @@ class Catsuggest extends Standard
 		if( $config->get( 'client/html/catalog/suggest/restrict', true ) == true )
 		{
 			$level = $config->get( 'client/html/catalog/lists/levels', \Aimeos\MW\Tree\Manager\Base::LEVEL_ONE );
+			// @phpstan-ignore argument.type
 			$catids = $view->param( 'f_catid', $config->get( 'client/html/catalog/lists/catid-default' ) );
 
 			$cntl->category( $catids, 'default', $level )
@@ -57,6 +63,7 @@ class Catsuggest extends Standard
 			$this->call( 'conditions', $cntl, $view );
 		}
 
+		// @phpstan-ignore argument.type, argument.type
 		$view->suggestItems = $cntl->slice( 0, $size - count( $catItems ) - count( $supItems ) )->search();
 		$view->suggestSupplierItems = $supItems;
 		$view->suggestCatalogItems = $catItems;

@@ -36,6 +36,7 @@ class Search extends \Aimeos\MShop\Common\Manager\Decorator\Base
 			{
 				$str = '';
 				$regex = '/(\&|\||\!|\-|\+|\>|\<|\(|\)|\~|\*|\:|\"|\'|\@|\\| )+/';
+				// @phpstan-ignore argument.type
 				$search = trim( mb_strtolower( preg_replace( $regex, ' ', $params[0] ) ), "' \t\n\r\0\x0B" );
 
 				foreach( explode( ' ', $search ) as $part )
